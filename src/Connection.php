@@ -8,6 +8,8 @@ class Connection extends \Doctrine\DBAL\Connection
 
     public function connect()
     {
+        $this->hasBeenClosedWithAnOpenTransaction = false;
+
         if ($this->_conn !== null) {
             return false;
         }
