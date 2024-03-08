@@ -123,7 +123,7 @@ trait ConnectionTrait
         $this->hasBeenClosedWithAnOpenTransaction = false;
 
         /** @psalm-suppress InternalMethod */
-        return parent::connect($connectionName);
+        return parent::getNativeConnection($connectionName);
     }
 
     public function close()
