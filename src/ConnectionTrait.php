@@ -123,10 +123,10 @@ trait ConnectionTrait
         $this->hasBeenClosedWithAnOpenTransaction = false;
 
         /** @psalm-suppress InternalMethod */
-        return parent::connect($connectionName);
+        return $this->reconnect($connectionName);
     }
 
-    public function close()
+    public function close(): void
     {
         if ($this->getTransactionNestingLevel() > 0) {
             $this->hasBeenClosedWithAnOpenTransaction = true;
@@ -172,7 +172,7 @@ trait ConnectionTrait
         }, $sql);
     }
 
-    public function beginTransaction()
+    public function beginTransaction(): bool
     {
         if ($this->hasBeenClosedWithAnOpenTransaction || 0 !== $this->getTransactionNestingLevel()) {
             return @parent::beginTransaction();
