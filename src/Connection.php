@@ -6,7 +6,7 @@ class Connection extends \Doctrine\DBAL\Connection
 {
     use ConnectionTrait;
 
-    public function connect()
+    public function connect(): bool
     {
         $this->hasBeenClosedWithAnOpenTransaction = false;
 

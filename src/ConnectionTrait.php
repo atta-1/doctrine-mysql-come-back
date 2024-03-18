@@ -161,6 +161,8 @@ trait ConnectionTrait
      * @param list<mixed>|array<string, mixed>                                     $params
      * @param array<int, int|string|Type|null>|array<string, int|string|Type|null> $types
      *
+     * @return int|string The number of affected rows.
+     *
      * @psalm-suppress MoreSpecificImplementedParamType
      */
     public function executeStatement($sql, array $params = [], array $types = [])
